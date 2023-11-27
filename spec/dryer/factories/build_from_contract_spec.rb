@@ -55,21 +55,21 @@ RSpec.describe Dryer::Factories::BuildFromContract do
     expect(subject.contract).to eq(contract)
   end
 
-  #context "for complex contracts" do
+  context "for complex contracts" do
 
-    #let(:contract) { ComplexTestContract }
-    #let(:generated_payload) do
-      #{
-        #foo: 'bar',
-        #baz: 'quux',
-        #something: { baz: 'quux' },
-        #list: [ 'bar', 'bar', 'bar' ]
-      #}
-    #end
+    let(:contract) { ComplexTestContract }
+    let(:generated_payload) do
+      {
+        foo: 'bar',
+        baz: 'quux',
+        something: { baz: 'quux' },
+        list: [ 'bar' ]
+      }
+    end
 
-    #it "builds a valid payload from the contract definition" do
-      #expect(subject.to_h).to eq(generated_payload)
-    #end
-  #end
+    it "builds a valid payload from the contract definition" do
+      expect(subject.to_h).to eq(generated_payload)
+    end
+  end
 end
 

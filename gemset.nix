@@ -9,6 +9,17 @@
     };
     version = "1.2.2";
   };
+  debug = {
+    dependencies = ["irb" "reline"];
+    groups = ["development"];
+    platforms = [];
+    source = {
+      remotes = ["http://rubygems.org"];
+      sha256 = "1nhkl066109cbldd3dc218wldish6v8iq63zalgvb95986nx2ash";
+      type = "gem";
+    };
+    version = "1.8.0";
+  };
   diff-lcs = {
     groups = ["default" "development"];
     platforms = [];
@@ -137,6 +148,60 @@
     };
     version = "1.14.1";
   };
+  io-console = {
+    groups = ["default" "development"];
+    platforms = [];
+    source = {
+      remotes = ["http://rubygems.org"];
+      sha256 = "0dikardh14c72gd9ypwh8dim41wvqmzfzf35mincaj5yals9m7ff";
+      type = "gem";
+    };
+    version = "0.6.0";
+  };
+  irb = {
+    dependencies = ["rdoc" "reline"];
+    groups = ["default" "development"];
+    platforms = [];
+    source = {
+      remotes = ["http://rubygems.org"];
+      sha256 = "0appka5sbafafn4f8d285skxw3qkhbap28vn9ms0pf7pbp7s2449";
+      type = "gem";
+    };
+    version = "1.9.1";
+  };
+  psych = {
+    dependencies = ["stringio"];
+    groups = ["default" "development"];
+    platforms = [];
+    source = {
+      remotes = ["http://rubygems.org"];
+      sha256 = "0wjzrkssjfjpynij5dpycyflhqbjvi1gc2j73xgq3b196s1d3c24";
+      type = "gem";
+    };
+    version = "5.1.1.1";
+  };
+  rdoc = {
+    dependencies = ["psych"];
+    groups = ["default" "development"];
+    platforms = [];
+    source = {
+      remotes = ["http://rubygems.org"];
+      sha256 = "1pnkgnk2vli1y8bbc25qbgv6z2al44dlgcm2mx3ssm34j7xz7gqh";
+      type = "gem";
+    };
+    version = "6.6.0";
+  };
+  reline = {
+    dependencies = ["io-console"];
+    groups = ["default" "development"];
+    platforms = [];
+    source = {
+      remotes = ["http://rubygems.org"];
+      sha256 = "07dywnqdl18a6i3dgnmlk96xxifyn69nap8y7wcm028av41isk13";
+      type = "gem";
+    };
+    version = "0.4.0";
+  };
   rspec = {
     dependencies = ["rspec-core" "rspec-expectations" "rspec-mocks"];
     groups = ["development"];
@@ -190,6 +255,16 @@
       type = "gem";
     };
     version = "3.12.1";
+  };
+  stringio = {
+    groups = ["default" "development"];
+    platforms = [];
+    source = {
+      remotes = ["http://rubygems.org"];
+      sha256 = "1rgf4g5g0kafghsyn2l88gs1cmip381mpga7n53r8h65wdc8afg7";
+      type = "gem";
+    };
+    version = "3.0.9";
   };
   zeitwerk = {
     groups = ["default"];

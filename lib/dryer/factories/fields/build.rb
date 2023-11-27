@@ -16,13 +16,28 @@ module Dryer
         private
 
         def build_field(field_name, field_type)
-          if field_type.meta[:generator]
-            {field_name => field_type.meta[:generator].call}
+          { field_name => build_field_value(field_type) }
+        end
+
+        def build_field_value(field_type)
+          generator = field_type.meta[:generator]
+          if generator
+            generator.call
           else
             case field_type.type.name
             when "String"
-              {field_name => SecureRandom.uuid.to_s }
+              SecureRandom.uuid.to_s
+            when "Hash"
+              generate_hash(field_type)
+            when "Array"
+              [ build_field_value(field_type.type.member) ]
             end
+          end
+        end
+
+        def generate_hash(field_type)
+          field_type.keys.inject({}) do |hash, k|
+            hash.merge(build_field(k.name, k.type))
           end
         end
 
