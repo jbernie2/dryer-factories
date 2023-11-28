@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   # but I am having nix issues with importing the version file
   # when this file is evaluated
   #spec.version               = Dryer::Factories::Version 
-  spec.version               = "0.0.1" 
+  spec.version               = "0.0.2"
   spec.authors               = ['John Bernier']
   spec.email                 = ['john.b.bernier@gmail.com']
   spec.summary               = 'Generate payloads from dry-validation definitions'
