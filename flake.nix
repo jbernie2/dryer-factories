@@ -51,6 +51,9 @@
         packages = {
           default = builds.ruby.outputs.rubyEnv;
           updateDeps = builds.ruby.outputs.updateDeps;
+          githubRelease = pkgs.callPackage ./nix/github/setup.nix {
+            gemspec_path = ./dryer_factories.gemspec;
+          };
         };
       }
     );
