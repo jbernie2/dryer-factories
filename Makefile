@@ -18,3 +18,9 @@ bundle: ## rebuild Gemfile.lock/gemset.nix from Gemfile
 	nix \
 		--extra-experimental-features 'nix-command flakes' \
 		run ".#updateDeps"
+
+.PHONY: release
+release: ## release to github
+	nix \
+		--extra-experimental-features 'nix-command flakes' \
+		run ".#githubRelease"
