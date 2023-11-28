@@ -1,5 +1,4 @@
 require "dry-validation"
-require "debug"
 require_relative "../../../../lib/dryer/factories/fields/build.rb"
 
 RSpec.describe Dryer::Factories::Fields::Build do
