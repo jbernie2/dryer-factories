@@ -1,5 +1,5 @@
 require "dry-validation"
-require_relative "../../../lib/dryer/factories/build_from_contract.rb"
+require_relative "../../../lib/dryer_factories.rb"
 require_relative "../../../lib/dryer/factories/generated_payload.rb"
 
 RSpec.describe Dryer::Factories::BuildFromContract do
