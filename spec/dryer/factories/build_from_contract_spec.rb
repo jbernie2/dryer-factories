@@ -71,5 +71,11 @@ RSpec.describe Dryer::Factories::BuildFromContract do
       expect(subject.to_h).to eq(generated_payload)
     end
   end
+
+  context "when something other than a contract is passed in" do
+    it "raises a helpful exception" do
+      expect { described_class.call("foo") }.to raise_error
+    end
+  end
 end
 

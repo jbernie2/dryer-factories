@@ -7,6 +7,15 @@ module Dryer
     class BuildFromContract < SimpleService
       def initialize(contract)
         @contract = contract
+        check_contract_type!
+      end
+
+      def check_contract_type!
+        raise(
+          "#{self.class}.call: Argument must be an instance "+
+          "or subclass of Dry::Validation::Contract"
+        ) unless contract.respond_to?(:ancestors) &&
+          contract.ancestors.include?(Dry::Validation::Contract)
       end
 
       def call
