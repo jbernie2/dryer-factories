@@ -20,7 +20,20 @@ bundle: ## rebuild Gemfile.lock/gemset.nix from Gemfile
 		run ".#updateDeps"
 
 .PHONY: release
-release: ## release to github
+release: ## release to github and rubygems.org
+	$(MAKE) release-to-github
+	$(MAKE) release-to-rubygems
+
+.PHONY: release-to-github
+release-to-github: ## release to github
 	nix \
 		--extra-experimental-features 'nix-command flakes' \
 		run ".#githubRelease"
+
+.PHONY: release-to-rubygems
+release-to-rubygems: ## release to rubygems.org
+	nix \
+		--extra-experimental-features 'nix-command flakes' \
+		shell --ignore-environment \
+		--keep GEM_HOST_API_KEY \
+		".#rubygemsRelease" --command rubygems-release

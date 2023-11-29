@@ -54,6 +54,9 @@
           githubRelease = pkgs.callPackage ./nix/github/setup.nix {
             gemspec_path = ./dryer_factories.gemspec;
           };
+          rubygemsRelease = pkgs.callPackage ./nix/rubygems_release {
+            gemspec_path = ./dryer_factories.gemspec;
+          };
         };
       }
     );
