@@ -6,3 +6,6 @@ result
 *.swp
 *.swo
 tags
+
+#compiled gem files
+*.gem
