@@ -1,5 +1,9 @@
+require "rubygems"
+
 module Dryer
   module Factories
-    VERSION = '0.0.1'
+    VERSION = Gem::Specification::load(
+      "./dryer_factories.gemspec"
+    ).version
   end
 end
