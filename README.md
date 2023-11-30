@@ -11,10 +11,15 @@ gem "dryer_factories"
 ## Usage
 ```
 test "POST 200 - successfully creating a user" do
-    request = Dryer::Factories::BuildFromContract.call(
-      ApiResources::Users::Post.request_contract
-    )
-    post ApiResources::Users::Post.url, params: request.as_json
+    class SimpleContract < Dry::Validation::Contract
+        params do
+            required(:email).filled(:string)
+            required(:password).filled(:string)
+        end
+    end
+
+    request = Dryer::Factories::BuildFromContract.call(SimpleContract)
+    post "/users", params: request.as_json
 
     assert_response :success
 end
