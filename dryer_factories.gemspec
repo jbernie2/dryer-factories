@@ -1,12 +1,6 @@
-#require File.expand_path('lib/dryer/factories/version.rb', __dir__)
 Gem::Specification.new do |spec|
   spec.name                  = 'dryer_factories'
-
-  # this should be imported from lib/dryer/factories/version.rb
-  # but I am having nix issues with importing the version file
-  # when this file is evaluated
-  #spec.version               = Dryer::Factories::Version 
-  spec.version               = "0.0.2"
+  spec.version               = "0.0.3"
   spec.authors               = ['John Bernier']
   spec.email                 = ['john.b.bernier@gmail.com']
   spec.summary               = 'Generate payloads from dry-validation definitions'
