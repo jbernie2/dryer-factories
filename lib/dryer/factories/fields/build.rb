@@ -1,9 +1,9 @@
-require_relative "../simple_service.rb"
+require "dryer_services"
 
 module Dryer
   module Factories
     module Fields
-      class Build < SimpleService
+      class Build < Dryer::Services::SimpleService
         def initialize(name:, type:)
           @name = name
           @type = type

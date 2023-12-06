@@ -1,10 +1,11 @@
-require_relative "./simple_service.rb"
 require_relative "./generated_payload.rb"
 require_relative "./fields/build.rb"
 
+require "dryer_services"
+
 module Dryer
   module Factories
-    class BuildFromContract < SimpleService
+    class BuildFromContract < Dryer::Services::SimpleService
       def initialize(contract)
         @contract = contract
         check_contract_type!
