@@ -3,40 +3,59 @@ require_relative "../../../../lib/dryer/factories/fields/build.rb"
 
 RSpec.describe Dryer::Factories::Fields::Build do
 
-  module TestTypes
-    dry_types = Dry::Types(default: :params)
-    Foo = dry_types::String.meta(
-      generator: lambda { 'bar' }
+  before do
+    stub_const(
+      "TestTypeFoo",
+      Dry::Types(default: :params)::String.meta(
+        generator: lambda { 'bar' }
+      )
     )
-    Baz = dry_types::String.meta(
-      generator: lambda { 'quux' }
+
+    stub_const(
+      "TestTypeBaz",
+      Dry::Types(default: :params)::String.meta(
+        generator: lambda { 'quux' }
+      )
     )
-  end
 
-  class ContractWithGenerator < Dry::Validation::Contract
-    params do
-      required(:foo).filled(:string).value(TestTypes::Foo)
-    end
-  end
-
-  class ContractWithoutGenerator < Dry::Validation::Contract
-    params do
-      required(:foo).filled(:string)
-    end
-  end
-
-  class ContractWithHash < Dry::Validation::Contract
-    params do
-      required(:foo).hash do
-        required(:baz).filled(:string).value(TestTypes::Baz)
+    stub_const(
+      "ContractWithGenerator",
+      Class.new(Dry::Validation::Contract) do
+        params do
+          required(:foo).filled(:string).value(TestTypeFoo)
+        end
       end
-    end
-  end
+    )
 
-  class ContractWithArray < Dry::Validation::Contract
-    params do
-      required(:foo).value(array[TestTypes::Baz])
-    end
+    stub_const(
+      "ContractWithoutGenerator",
+      Class.new(Dry::Validation::Contract) do
+        params do
+          required(:foo).filled(:string)
+        end
+      end
+    )
+
+    stub_const(
+      "ContractWithHash",
+      Class.new(Dry::Validation::Contract) do
+        params do
+          required(:foo).hash do
+            required(:baz).filled(:string).value(TestTypeBaz)
+          end
+        end
+      end
+    )
+
+    stub_const(
+      "ContractWithArray",
+      Class.new(Dry::Validation::Contract) do
+        params do
+          required(:foo).value(array[TestTypeBaz])
+        end
+      end
+    )
+
   end
 
   let(:contract_field) { contract.schema.types.first }

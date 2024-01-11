@@ -74,7 +74,9 @@ RSpec.describe Dryer::Factories::BuildFromContract do
 
   context "when something other than a contract is passed in" do
     it "raises a helpful exception" do
-      expect { described_class.call("foo") }.to raise_error
+      expect { described_class.call("foo") }.to raise_error(
+        /Argument must be an instance or subclass of Dry::Validation::Contract/
+      )
     end
   end
 end
