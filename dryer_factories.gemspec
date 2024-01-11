@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name                  = 'dryer_factories'
-  spec.version               = "0.1.0"
+  spec.version               = "0.2.0"
   spec.authors               = ['John Bernier']
   spec.email                 = ['john.b.bernier@gmail.com']
   spec.summary               = 'Generate payloads from dry-validation definitions'
